@@ -33,6 +33,9 @@ const expressPort = 5000;
 // establish database connection
 mongoose.Promise = global.Promise;
 mongoose.connect(db, { useNewUrlParser: true });
+mongoose.connection.once("open", () => {
+  console.log("Connected to Mongo");
+});
 
 // instantiate express application object
 const app = express();
